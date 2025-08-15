@@ -1,770 +1,295 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airtech Refrigeração</title>
-    </head>S
-    <style>
-        :root {
-            --primary-color: #08589e;
-            --secondary-color: #636ceb;
-            --text-color: #333;
-            --light-color: #f5f5f5;
-            --dark-color: #1e1e1e;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            z-index: 100;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-        
-        .logo span {
-            color: var(--secondary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .cta-button {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-        
-        .cta-button:hover {
-            background-color: #7860e4;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/api/placeholder/1200/600") center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding-top: 70px;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background-color: var(--light-color);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: var(--text-color);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-icon {
-            font-size: 48px;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .service-card h3 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 0;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            height: 300px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(32, 107, 173, 0.8);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Benefits Section */
-        .benefits {
-            padding: 100px 0;
-            background-color: var(--light-color);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .benefit-card {
-            display: flex;
-            align-items: flex-start;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .benefit-icon {
-            font-size: 24px;
-            color: var(--secondary-color);
-            margin-right: 20px;
-            min-width: 24px;
-        }
-        
-        .benefit-content h3 {
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            padding: 100px 0;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-        
-        .testimonial-text {
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .author-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-        
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-details h4 {
-            color: var(--primary-color);
-        }
-        
-        .author-details p {
-            font-size: 14px;
-            color: #777;
-        }
-        
-        /* Call to Action Section */
-        .cta {
-            padding: 100px 0;
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 18px;
-        }
-        
-        .cta .cta-button {
-            background-color: var(--secondary-color);
-            font-size: 18px;
-            padding: 15px 30px;
-        }
-        
-        /* Contact Form Section */
-        .contact {
-            padding: 100px 0;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .contact-info h3 {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-        
-        .contact-info p {
-            margin-bottom: 30px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            color: var(--secondary-color);
-            font-size: 24px;
-            margin-right: 15px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-        }
-        
-        .form-button {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .form-button:hover {
-            background-color: #584ee0;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 100px 0;
-            background-color: var(--light-color);
-        }
-        
-        .faq-item {
-            background-color: white;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .faq-answer {
-            padding: 0 20px 20px;
-            display: none;
-        }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 5px 10px;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIRTECH REFRIGERAÇÃO | Instalação e Manutenção de Ar-Condicionado em São Paulo</title>
+  <meta name="description" content="Instalação, manutenção preventiva, limpeza e PMOC de ar-condicionado. Atendemos toda a Grande São Paulo com serviço premium focado em conforto e bem-estar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Paleta pedida: azul, gelo e branco */
+      --azul-escuro:#0d47a1;   /* Azul principal */
+      --azul:#1e88e5;          /* Ações/links */
+      --gelo:#f0f7ff;          /* Fundo gelo */
+      --branco:#ffffff;        /* Branco */
+      --grafite:#0f172a;       /* Texto forte */
+      --cinza:#52607a;         /* Texto fraco */
+      --card-borda:#e6eef8;
+      --shadow:0 10px 20px rgba(13,71,161,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--grafite);background:linear-gradient(180deg,var(--branco),var(--gelo))}
+    a{color:var(--azul);text-decoration:none}
+    .container{max-width:1120px;margin-inline:auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #eaf1fb}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--azul-escuro);letter-spacing:.3px}
+    .brand .mark{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--azul-escuro),var(--azul));color:var(--branco);box-shadow:var(--shadow)}
+    .brand span{font-size:1.05rem}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{font-weight:600;color:#1f2937}
+    .cta{padding:10px 14px;border-radius:12px;background:var(--azul-escuro);color:var(--branco);box-shadow:var(--shadow)}
+    .burger{display:none;border:0;background:transparent}
+    .burger span{display:block;width:24px;height:2px;background:#0f172a;margin:5px 0}
+
+    @media (max-width:860px){
+      .menu{display:none}
+      .menu.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:var(--branco);padding:14px 20px 22px;border-bottom:1px solid #eaf1fb}
+      .burger{display:block}
+    }
+
+    /* Hero */
+    .hero{padding:56px 0 32px}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--gelo);color:var(--azul-escuro);font-weight:700;border:1px solid #dbeafe}
+    h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:12px 0 10px;color:#0b2c6f}
+    .sub{font-size:clamp(15px,2vw,18px);color:var(--cinza)}
+    .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:700}
+    .btn.primary{background:var(--azul-escuro);color:var(--branco)}
+    .btn.ghost{background:var(--branco);border:1px solid var(--card-borda);color:#0b2c6f}
+    .hero-card{background:var(--branco);border:1px solid var(--card-borda);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+    .badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .badge{background:var(--branco);border:1px dashed #d7e6fb;border-radius:12px;padding:10px;text-align:center;font-weight:600;color:#173361}
+    @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}.badges{grid-template-columns:1fr 1fr}}
+
+    /* Sections */
+    section{padding:56px 0}
+    .title{font-size:clamp(22px,3.2vw,32px);color:#0b2c6f;margin:0 0 8px}
+    .lead{color:var(--cinza);max-width:820px}
+
+    /* Serviços */
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){.grid.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+    .card{background:var(--branco);border:1px solid var(--card-borda);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;color:#0b2c6f}
+    .card p{margin:0;color:var(--cinza)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--gelo);border:1px solid #e1ecfb;color:#16407a;font-size:.85rem;font-weight:700}
+
+    /* Sobre */
+    .about{background:linear-gradient(180deg,var(--gelo),#ffffff)}
+    .about .wrapper{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    .about img{width:100%;border-radius:16px;border:1px solid var(--card-borda);box-shadow:var(--shadow)}
+    @media (max-width:900px){.about .wrapper{grid-template-columns:1fr}}
+
+    /* Contato */
+    form{display:grid;gap:12px}
+    input, textarea, select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--card-borda);background:var(--branco);font:inherit}
+    textarea{min-height:120px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:640px){.form-row{grid-template-columns:1fr}}
+    .submit{background:var(--azul-escuro);color:var(--branco);border:0;padding:12px 16px;border-radius:12px;font-weight:800;cursor:pointer}
+
+    /* Mapa */
+    .map{border:1px solid var(--card-borda);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+
+    /* Rodapé */
+    footer{background:var(--branco);border-top:1px solid #eaf1fb;padding:26px 0;color:#59708f}
+
+    /* Flutuante WhatsApp */
+    .zap{position:fixed;right:18px;bottom:18px;background:#22c55e;color:#fff;border-radius:999px;padding:12px 16px;box-shadow:0 10px 25px rgba(34,197,94,.35);font-weight:800}
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">Airtech<span>Refrigeração</span></div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Serviços</a></li>
-                        <li><a href="#portfolio">Galeria</a></li>
-                        <li><a href="#benefits">Vantagens</a></li>
-                        <li><a href="#testimonials">Depoimentos</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-<div class="hero-content">
-    <h1>Transforme Seu Ambiente com Ar-Condicionado de Alta Qualidade</h1>
-    <p>Mais de 1000 opções de sistemas de ar-condicionado para proporcionar conforto e eficiência. Instalação profissional e garantia de qualidade.</p>
-    <a href="#contact" class="cta-button">Solicite um Orçamento Grátis</a>
-</div>
-</div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nossos Serviços</h2>
-            <p>Oferecemos soluções completas em climatização, desde a escolha do sistema ideal até a instalação profissional.</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📋</div>
-                <h3>Consultoria Personalizada</h3>
-                <p>Nossa equipe de especialistas ajuda você a escolher o sistema de ar-condicionado ideal para o seu ambiente, considerando eficiência, conforto e economia de energia.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🛒</div>
-                <h3>Venda de Ar-Condicionado</h3>
-                <p>Ampla variedade de modelos e marcas de ar-condicionado, com soluções para todos os tipos de ambientes e necessidades.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>Instalação Profissional</h3>
-                <p>Equipe especializada em instalação de ar-condicionado, garantindo o funcionamento adequado e a melhor performance do seu equipamento.</p>
-            </div>
-        </div>
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand" aria-label="AIRTECH Refrigeração - Início">
+        <div class="mark" aria-hidden="true">❄️</div>
+        <span>AIRTECH <span style="opacity:.8">REFRIGERAÇÃO</span></span>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#contato" class="cta">Contato</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </div>
-</section>
+  </header>
 
-<!-- Portfolio Section -->
-<section id="portfolio" class="portfolio">
-    <div class="container">
-        <div class="section-title">
-            <h2>Nossa Galeria</h2>
-            <p>Confira alguns dos nossos projetos realizados e inspire-se para climatizar o seu espaço.</p>
+  <main id="home" class="hero">
+    <div class="container wrap">
+      <div>
+        <span class="kicker">Grande São Paulo • Atendimento rápido</span>
+        <h1>Conforto térmico premium para sua casa e sua empresa</h1>
+        <p class="sub">Instalação, manutenção preventiva, limpeza e higienização de ar‑condicionado split, multi‑split e VRF. Serviço com qualidade, pontualidade e garantia.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contato">Solicitar orçamento</a>
+          <a class="btn ghost" href="#servicos">Ver serviços</a>
         </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em sala de estar">
-                <div class="portfolio-overlay">
-                    <h3>Sala de Estar Confortável</h3>
-                    <p>Instalação de ar-condicionado com baixo consumo de energia para um ambiente agradável e eficiente.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em quarto">
-                <div class="portfolio-overlay">
-                    <h3>Quarto Aconchegante</h3>
-                    <p>Sistema de ar-condicionado com controle de temperatura ideal para noites de descanso tranquilas.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em escritório">
-                <div class="portfolio-overlay">
-                    <h3>Escritório Moderno</h3>
-                    <p>Instalação de ar-condicionado em ambiente corporativo para conforto e produtividade no trabalho.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em cozinha">
-                <div class="portfolio-overlay">
-                    <h3>Cozinha Estilosa</h3>
-                    <p>Sistemas de climatização para ambientes gourmets, proporcionando conforto e bem-estar.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em banheiro">
-                <div class="portfolio-overlay">
-                    <h3>Banheiro Confortável</h3>
-                    <p>Ar-condicionado para banheiros, com modelos que oferecem eficiência e resistência à umidade.</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="/api/placeholder/400/400" alt="Ar-condicionado em quarto infantil">
-                <div class="portfolio-overlay">
-                    <h3>Quarto Infantil Fresquinho</h3>
-                    <p>Instalação de ar-condicionado para quartos de crianças, com modelos que proporcionam um ambiente saudável e confortável.</p>
-                </div>
-            </div>
+        <div class="badges">
+          <div class="badge">Técnicos certificados</div>
+          <div class="badge">Garantia em serviço</div>
+          <div class="badge">PMOC empresarial</div>
         </div>
+      </div>
+      <div class="hero-card">
+        <div class="chip">Atendemos toda a Grande São Paulo</div>
+        <ul style="padding-left:18px;margin:12px 0 0;color:#334155;line-height:1.7">
+          <li>Instalação e start‑up (residencial e comercial)</li>
+          <li>Manutenção preventiva e corretiva</li>
+          <li>Limpeza de evaporadora/condensadora e filtros</li>
+          <li>Recarga de gás, testes de estanqueidade</li>
+          <li>Laudos e planos de manutenção para empresas</li>
+        </ul>
+      </div>
     </div>
-</section>
+  </main>
 
-<!-- Benefits Section -->
-<section id="benefits" class="benefits">
+  <section id="servicos">
     <div class="container">
-        <div class="section-title">
-            <h2>Por Que Escolher a Air Tech Refrigeração?</h2>
-            <p>Conheça as vantagens de trabalhar com a líder em soluções de climatização e ar-condicionado.</p>
-        </div>
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Qualidade Premium</h3>
-                    <p>Trabalhamos apenas com sistemas de ar-condicionado de alta qualidade, com eficiência comprovada e durabilidade garantida.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Instalação Profissional</h3>
-                    <p>Nossa equipe é especializada e certificada, garantindo o melhor desempenho e a instalação correta do seu ar-condicionado.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Garantia de Serviço</h3>
-                    <p>Oferecemos garantia de 2 anos para os serviços de instalação e assistência técnica.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Variedade de Modelos</h3>
-                    <p>Temos opções para todos os tipos de ambientes, com modelos econômicos, silenciosos e de alto desempenho.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Atendimento Personalizado</h3>
-                    <p>Consultoria gratuita para ajudar você a escolher o ar-condicionado ideal para o seu espaço.</p>
-                </div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-icon">✓</div>
-                <div class="benefit-content">
-                    <h3>Entrega Rápida</h3>
-                    <p>Produtos em estoque com entrega expressa ou importação ágil para garantir que sua instalação seja feita no tempo desejado.</p>
-                </div>
-            </div>
-        </div>
+      <h2 class="title">Serviços</h2>
+      <p class="lead">Soluções completas em climatização para residências, escritórios, comércios e indústrias.</p>
+      <div class="grid cols-3" style="margin-top:18px">
+        <article class="card">
+          <h3>Instalação</h3>
+          <p>Dimensionamento de carga térmica, infraestrutura e instalação de splits, multi‑splits e VRF, com acabamento limpo e garantia.</p>
+        </article>
+        <article class="card">
+          <h3>Manutenção preventiva</h3>
+          <p>Plano periódico para aumentar vida útil, reduzir consumo e evitar paradas. Checklist completo e relatório fotográfico.</p>
+        </article>
+        <article class="card">
+          <h3>Limpeza e higienização</h3>
+          <p>Remoção de fungos e poeira, aplicação de produtos adequados e troca/limpeza de filtros para melhor qualidade do ar.</p>
+        </article>
+        <article class="card">
+          <h3>Manutenção corretiva</h3>
+          <p>Diagnóstico elétrico e mecânico, troca de componentes, testes de vazamento e recarga de fluido refrigerante.</p>
+        </article>
+        <article class="card">
+          <h3>Projetos de climatização</h3>
+          <p>Projeto, especificação e start‑up de sistemas de climatização para ambientes de missão crítica e áreas comerciais.</p>
+        </article>
+        <article class="card">
+          <h3>Empresas e contratos</h3>
+          <p>Planos sob medida para condomínios, lojas e escritórios, com atendimento programado e emergencial.</p>
+        </article>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Testimonials Section -->
-<section id="testimonials" class="testimonials">
-    <div class="container">
-        <div class="section-title">
-            <h2>O Que Dizem Nossos Clientes</h2>
-            <p>A satisfação de nossos clientes é o nosso maior patrimônio. Veja alguns depoimentos.</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    <p>"A Air Tech Refrigeração transformou completamente o conforto do meu lar. O ar-condicionado instalado tem uma performance excelente, e o serviço de instalação foi impecável. Super recomendo!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/100/100" alt="Cliente Ana">
-                    </div>
-                    <div class="author-details">
-                        <h4>Ana Oliveira</h4>
-                        <p>São Paulo, SP</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    <p>"Contratei a Air Tech para instalar ar-condicionado em toda a minha casa. Fiquei impressionado com a qualidade e o profissionalismo. O resultado ficou além das expectativas!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/100/100" alt="Cliente Carlos">
-                    </div>
-                    <div class="author-details">
-                        <h4>Carlos Mendes</h4>
-                        <p>Rio de Janeiro, RJ</p>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    <p>"A consultoria da Air Tech foi fundamental para escolhermos o sistema ideal para o quarto do nosso bebê. O ar-condicionado deixou o ambiente agradável e todos que visitam elogiam muito!"</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/100/100" alt="Cliente Mariana">
-                    </div>
-                    <div class="author-details">
-                        <h4>Mariana Santos</h4>
-                        <p>Belo Horizonte, MG</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <section id="sobre" class="about">
+    <div class="container wrapper">
+      <div>
+        <h2 class="title">Sobre nós</h2>
+        <p class="lead">A AIRTECH REFRIGERAÇÃO nasceu durante a pandemia com um propósito claro: oferecer um serviço <strong>premium</strong> de ar‑condicionado, focado em <strong>conforto</strong>, <strong>bem‑estar</strong> e atendimento humano. Unimos técnica, segurança e cuidado em cada visita.</p>
+        <ul style="padding-left:18px;color:#334155;line-height:1.8">
+          <li>Equipe qualificada e em constante atualização</li>
+          <li>Materiais de primeira e procedimentos padronizados</li>
+          <li>Compromisso com pontualidade, limpeza e garantia</li>
+        </ul>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=1280&auto=format&fit=crop" alt="Técnico instalando ar‑condicionado" loading="lazy" />
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Call to Action Section -->
-<section class="cta">
+  <section id="contato">
     <div class="container">
-        <h2>Transforme Seu Espaço Hoje Mesmo!</h2>
-        <p>Entre em contato e solicite um orçamento gratuito <br>
-             Estamos aqui para tornar seu ambiente mais confortável e eficiente.</p>
-<a href="#contact" class="cta-button">Solicite seu Orçamento</a>
-</div>
+      <h2 class="title">Contato</h2>
+      <p class="lead">Peça um orçamento ou fale com um especialista agora mesmo.</p>
+      <div class="grid cols-2" style="margin-top:18px">
+        <div class="card">
+          <h3>Fale com a AIRTECH</h3>
+          <p style="margin:8px 0;color:#334155">
+            📞 <strong>Telefone/WhatsApp:</strong> <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">(11) 99999‑9999</a><br>
+            ✉️ <strong>E‑mail:</strong> <a href="mailto:contato@airtechrefrigeracao.com.br">contato@airtechrefrigeracao.com.br</a><br>
+            🕒 <strong>Horário:</strong> Seg–Sáb, 8h às 18h
+          </p>
+          <p class="chip">Atendemos: São Paulo, ABC, Osasco, Barueri, Guarulhos, Mogi e região.</p>
+          <form id="formOrcamento" aria-label="Formulário de orçamento">
+            <div class="form-row">
+              <div>
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div>
+                <label for="tel">Telefone/WhatsApp</label>
+                <input id="tel" name="tel" placeholder="(11) 9 9999‑9999" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="servico">Serviço</label>
+                <select id="servico" name="servico" required>
+                  <option value="" selected disabled>Selecione…</option>
+                  <option>Instalação</option>
+                  <option>Manutenção preventiva</option>
+                  <option>Limpeza/Higienização</option>
+                  <option>Manutenção corretiva</option>
+                  <option>Projeto de climatização</option>
+                </select>
+              </div>
+              <div>
+                <label for="bairro">Bairro/Cidade</label>
+                <input id="bairro" name="bairro" placeholder="Ex: Tatuapé, Osasco" />
+              </div>
+            </div>
+            <div>
+              <label for="msg">Mensagem</label>
+              <textarea id="msg" name="mensagem" placeholder="Conte resumidamente sua necessidade"></textarea>
+            </div>
+            <button class="submit" type="submit">Enviar pedido</button>
+            <p id="ok" style="display:none;color:#15803d;font-weight:700;margin:8px 0 0">Recebido! Já vamos entrar em contato ✅</p>
+          </form>
+          <!-- Para envio real, integre com seu back-end ou serviços como Formspree / Netlify Forms. -->
+        </div>
+        <div>
+          <div class="map" aria-label="Mapa da Região Metropolitana de São Paulo">
+            <iframe title="Mapa de São Paulo" src="https://www.google.com/maps?q=São%20Paulo%20-%20SP&output=embed" width="100%" height="420" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <p style="margin:10px 4px 0;color:#334155">Base em São Paulo – atendimento em toda a região metropolitana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</section> 
-```
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <div>© <span id="year"></span> AIRTECH REFRIGERAÇÃO • Grande São Paulo</div>
+      <div style="opacity:.8">Cores: azul, gelo e branco • Feito para desempenho e acessibilidade</div>
+    </div>
+  </footer>
+
+  <a class="zap" href="https://wa.me/5511999999999" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">WhatsApp</a>
+
+  <script>
+    // Burger menu (mobile)
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger?.addEventListener('click',()=>menu.classList.toggle('open'));
+
+    // Ano no rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Formulário (demo)
+    const f = document.getElementById('formOrcamento');
+    f?.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      // Aqui você pode integrar com seu backend ou serviço de formulários
+      document.getElementById('ok').style.display = 'block';
+      f.reset();
+    });
+  </script>
+
+  <!--
+    Como personalizar:
+    - Cores: ajuste as variáveis CSS em :root (—azul-escuro, —azul, —gelo, —branco)
+    - WhatsApp/telefone: altere os links "wa.me/5511999999999" e textos de contato
+    - SEO: edite <title> e a meta description
+    - Imagens: substitua a foto em "Sobre nós" por uma imagem sua
+  -->
+</body>
+</html>
+
